@@ -3,7 +3,7 @@ class Game {
     worm : Worm
     
     constructor() {
-        console.log("game created")
+        console.log("The game has been created!")
 
         this.worm = new Worm
 
