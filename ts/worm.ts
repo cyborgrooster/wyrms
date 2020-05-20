@@ -18,14 +18,14 @@ class Worm {
         let game = document.getElementsByTagName("game")[0];
         game.appendChild(this.div);
 
-        this.leftKey = 0;
-        this.rightKey = 0;
+        this.leftKey = 37;
+        this.rightKey = 39;
 
         this.x = 0;
         this.y = 0;
 
-        window.addEventListener("keyleft",(e: KeyboardEvent) => this.onKeyLeft(e));
-        window.addEventListener("keyright",(e: KeyboardEvent) => this.onKeyRight(e))
+        window.addEventListener("keyup",(e: KeyboardEvent) => this.onKeyLeft(e));
+        window.addEventListener("keydown",(e: KeyboardEvent) => this.onKeyRight(e))
     }
 
     private onKeyLeft(e: KeyboardEvent): void {

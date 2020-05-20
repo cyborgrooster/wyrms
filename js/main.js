@@ -20,12 +20,12 @@ var Worm = (function () {
         this.div = document.createElement("aal");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.div);
-        this.leftKey = 0;
-        this.rightKey = 0;
+        this.leftKey = 37;
+        this.rightKey = 39;
         this.x = 0;
         this.y = 0;
-        window.addEventListener("keyleft", function (e) { return _this.onKeyLeft(e); });
-        window.addEventListener("keyright", function (e) { return _this.onKeyRight(e); });
+        window.addEventListener("keyup", function (e) { return _this.onKeyLeft(e); });
+        window.addEventListener("keydown", function (e) { return _this.onKeyRight(e); });
     }
     Worm.prototype.onKeyLeft = function (e) {
         console.log(e.keyCode);
