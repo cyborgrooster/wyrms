@@ -142,6 +142,7 @@ class Worm {
             console.log("game over")
         }
 
+        //update the worms position
         this.worm.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(${this.scale})`
     }
 
