@@ -17,13 +17,17 @@ var Worm = (function () {
         var _this = this;
         this.leftSpeed = 0;
         this.rightSpeed = 0;
-        this.div = document.createElement("aal");
+        this.aal = document.createElement("aal");
         var game = document.getElementsByTagName("game")[0];
-        game.appendChild(this.div);
+        game.appendChild(this.aal);
         this.leftKey = 37;
         this.rightKey = 39;
+        this.upKey = 38;
+        this.downKey = 40;
         this.x = 0;
         this.y = 0;
+        this.y = window.innerHeight - this.aal.clientHeight;
+        this.aal.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
         window.addEventListener("keyup", function (e) { return _this.onKeyLeft(e); });
         window.addEventListener("keydown", function (e) { return _this.onKeyRight(e); });
     }
@@ -36,6 +40,12 @@ var Worm = (function () {
             case this.rightKey:
                 this.rightSpeed = 5;
                 break;
+            case this.upKey:
+                alert("yo");
+                break;
+            case this.downKey:
+                alert("ey");
+                break;
         }
     };
     Worm.prototype.onKeyRight = function (e) {
@@ -47,13 +57,19 @@ var Worm = (function () {
             case this.rightKey:
                 this.rightSpeed = 10;
                 break;
+            case this.upKey:
+                alert("yo");
+                break;
+            case this.downKey:
+                alert("ey");
+                break;
         }
     };
     Worm.prototype.update = function () {
         var newY = this.y - this.leftSpeed + this.rightSpeed;
         if (newY > 0 && newY + 100 < window.innerHeight)
             this.y = newY;
-        this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+        this.aal.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Worm;
 }());
