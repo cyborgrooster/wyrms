@@ -26,9 +26,9 @@ class Worm {
         this.downKey = 40;
 
         this.x = 0;
-        this.y = 0;
+        this.y = 500;
 
-        this.y = window.innerHeight - this.aal.clientHeight
+        
         this.aal.style.transform = `translate(${this.x}px, ${this.y}px)`
 
         window.addEventListener("keyup",(e: KeyboardEvent) => this.onKeyLeft(e));
@@ -41,10 +41,10 @@ class Worm {
 
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 5;
+                this.leftSpeed = -5;
                 break;
             case this.rightKey:
-                this.rightSpeed = 5;
+                this.rightSpeed = 0;
                 break;
             case this.upKey:
                 alert("yo");
@@ -61,10 +61,10 @@ class Worm {
 
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 10;
+                this.leftSpeed = 0;
                 break;
             case this.rightKey:
-                this.rightSpeed = 10;
+                this.rightSpeed = 5;
                 break;
             case this.upKey:
                 alert("yo");
@@ -72,7 +72,7 @@ class Worm {
             case this.downKey:
                 alert("ey");
                 break;
-            }
+        }
     }
         
     public update() {
