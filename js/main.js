@@ -20,54 +20,42 @@ var Worm = (function () {
         this.aal = document.createElement("aal");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.aal);
-        this.leftKey = 37;
-        this.rightKey = 39;
-        this.upKey = 38;
-        this.downKey = 40;
+        this.leftKey = 87;
+        this.rightKey = 83;
         this.x = 0;
         this.y = 500;
         this.aal.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-        window.addEventListener("keyup", function (e) { return _this.onKeyLeft(e); });
-        window.addEventListener("keydown", function (e) { return _this.onKeyRight(e); });
+        window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
+        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
     }
-    Worm.prototype.onKeyLeft = function (e) {
+    Worm.prototype.getWorm = function () {
+        return this.aal.getBoundingClientRect();
+    };
+    Worm.prototype.onKeyUp = function (e) {
         console.log(e.keyCode);
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = -5;
+                this.leftSpeed = 5;
                 break;
             case this.rightKey:
-                this.rightSpeed = 0;
-                break;
-            case this.upKey:
-                alert("yo");
-                break;
-            case this.downKey:
-                alert("ey");
+                this.rightSpeed = 5;
                 break;
         }
     };
-    Worm.prototype.onKeyRight = function (e) {
+    Worm.prototype.onKeyDown = function (e) {
         console.log(e.keyCode);
         switch (e.keyCode) {
             case this.leftKey:
                 this.leftSpeed = 0;
                 break;
             case this.rightKey:
-                this.rightSpeed = 5;
-                break;
-            case this.upKey:
-                alert("yo");
-                break;
-            case this.downKey:
-                alert("ey");
+                this.rightSpeed = 0;
                 break;
         }
     };
     Worm.prototype.update = function () {
-        var newY = this.y - this.leftSpeed + this.rightSpeed;
-        if (newY > 0 && newY + 100 < window.innerHeight)
-            this.y = newY;
+        this.x += this.rightSpeed;
+        this.y += this.leftSpeed;
         this.aal.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Worm;

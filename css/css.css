@@ -21,6 +21,4 @@ background {
 aal {
     background-image: url(../img/aal.png);
     width:238px; height: 120px;
-    filter: hue-rotate(90deg);
-    cursor:pointer;
 }

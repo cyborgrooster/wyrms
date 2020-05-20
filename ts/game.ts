@@ -1,6 +1,6 @@
 class Game {
 
-    private worm: Worm;
+    worm: Worm;
 
     constructor() {
         this.worm = new Worm(); //maakt nieuwe worm aan
