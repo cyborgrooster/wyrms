@@ -19,11 +19,13 @@ var Worm = (function () {
         this.x = 0;
         this.y = 0;
         this.dy = 0;
+        this.scale = 1;
         this.movementSpeed = 0;
-        this.jumpHeight = -5;
+        this.jumpHeight = -10;
         this.jumping = false;
-        this.onGround = false;
         this.gravity = 0.2;
+        this.health = 3;
+        this.gotHit = false;
         this.worm = document.createElement("worm");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.worm);
@@ -39,13 +41,17 @@ var Worm = (function () {
         switch (event.keyCode) {
             case this.dkey:
                 this.movementSpeed = 3;
+                this.scale = -1;
                 break;
             case this.akey:
                 this.movementSpeed = -3;
+                this.scale = 1;
                 break;
             case this.wkey:
-                if (this.onGround) {
+                if (!this.jumping) {
                     this.jumping = true;
+                    console.log("jumped");
+                    this.dy = this.jumpHeight;
                 }
         }
     };
@@ -61,26 +67,20 @@ var Worm = (function () {
     };
     Worm.prototype.update = function () {
         this.x = this.x + this.movementSpeed;
-        this.dy += this.gravity;
-        this.y += this.dy;
+        if (this.jumping) {
+            this.dy += this.gravity;
+            this.y += this.dy;
+        }
         if (this.y >= window.innerHeight - this.worm.clientHeight) {
-            this.onGround = true;
             this.jumping = false;
-            console.log("ik sta op de grond");
             this.dy = 0;
         }
-        else {
-            this.onGround = false;
+        if (this.gotHit) {
+            this.health - 1;
         }
-        if (this.jumping == true) {
-            this.dy = this.jumpHeight;
+        if (this.health < 0) {
         }
-        if (this.movementSpeed > 0) {
-            this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px) scaleX(-1)";
-        }
-        if (this.movementSpeed < 0) {
-            this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px) scaleX(1)";
-        }
+        this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px) scaleX(" + this.scale + ")";
     };
     return Worm;
 }());
