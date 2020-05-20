@@ -15,8 +15,7 @@ window.addEventListener("load", function () { return new Game(); });
 var Worm = (function () {
     function Worm() {
         var _this = this;
-        this.leftSpeed = 0;
-        this.rightSpeed = 0;
+        this.moveSpeed = 0;
         this.aal = document.createElement("aal");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.aal);
@@ -35,10 +34,10 @@ var Worm = (function () {
         console.log(e.keyCode);
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 5;
+                this.moveSpeed = -5;
                 break;
             case this.rightKey:
-                this.rightSpeed = 5;
+                this.moveSpeed = 5;
                 break;
         }
     };
@@ -46,16 +45,15 @@ var Worm = (function () {
         console.log(e.keyCode);
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 0;
+                this.moveSpeed = 0;
                 break;
             case this.rightKey:
-                this.rightSpeed = 0;
+                this.moveSpeed = 0;
                 break;
         }
     };
     Worm.prototype.update = function () {
-        this.x += this.rightSpeed;
-        this.y += this.leftSpeed;
+        this.x += this.moveSpeed;
         this.aal.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
     return Worm;

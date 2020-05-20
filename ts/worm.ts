@@ -11,8 +11,8 @@ class Worm {
     //private upKey: number;
     //private downKey: number;
 
-    private leftSpeed: number = 0;
-    private rightSpeed: number = 0;
+    private moveSpeed: number = 0;
+    //private rightSpeed: number = 0;
     //private upSpeed: number = 0;
     //private downSpeed: number = 0;
 
@@ -44,11 +44,10 @@ class Worm {
 
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 5;
-                
+                this.moveSpeed = -5;
                 break;
             case this.rightKey:
-                this.rightSpeed = 5;
+                this.moveSpeed = 5;
                 break;
             /*case this.upKey:
                 this.upSpeed = 5;
@@ -64,10 +63,10 @@ class Worm {
 
         switch (e.keyCode) {
             case this.leftKey:
-                this.leftSpeed = 0;
+                this.moveSpeed = 0;
                 break;
             case this.rightKey:
-                this.rightSpeed = 0;
+                this.moveSpeed = 0;
                 break;
             /*case this.upKey:
                 this.upSpeed = 0;
@@ -79,8 +78,8 @@ class Worm {
     }
         
     public update() {
-        this.x += this.rightSpeed;
-        this.y += this.leftSpeed;
+        this.x += this.moveSpeed;
+        //this.y += this.leftSpeed;
   
         this.aal.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
