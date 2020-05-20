@@ -1,0 +1,51 @@
+body {
+    background-color: #70CF51;
+    font-family: 'Press Start 2P', cursive;
+    color:white;
+    font-size:22px;
+    overflow:hidden;
+    margin:0px; padding:0px;
+}
+
+game * {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+mole {
+    background-image: url(../images/mole.png);
+    width:500px; 
+    height: 500px;
+}
+
+.mole2 {
+    background-image: url(../images/mole2.png);
+    width:500px; 
+    height: 500px;
+}
+
+background {
+    background-image: url(../images/dirt.png);
+    width:100%; 
+    height: 100%;
+    background-size: cover;
+}
+
+hpBar {
+    background-image: url(../images/heart3.png);
+    width: 1920px; height: 1080px;
+}
+
+.heart2 {
+    background-image: url(../images/heart2.png);
+}
+
+.heart1 {
+    background-image: url(../images/heart1.png);
+}
+.heartempty {
+    background-image: url(../images/heartempty.png);
+}
+
