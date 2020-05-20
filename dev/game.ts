@@ -14,6 +14,7 @@ class Game {
         this.worm.update()
         requestAnimationFrame(()=>this.gameLoop())
     }
+
 } 
 
 window.addEventListener("load", () => new Game())

@@ -4,12 +4,18 @@ class Worm {
 
     private x: number = 0
     private y: number = 0
+    private dy: number = 0
 
     private akey: number
     private dkey: number
     private wkey: number
 
     private movementSpeed: number = 0
+    private jumpHeight: number = -5
+    private jumping: boolean = false
+
+    private onGround: boolean = false
+    private gravity: number = 0.2
 
 
     constructor() {
@@ -51,6 +57,10 @@ class Worm {
             case this.akey:
                 this.movementSpeed = -3
                 break
+            case this.wkey:
+                if(this.onGround) {
+                this.jumping = true
+                }
         }
     }
 
@@ -75,10 +85,27 @@ class Worm {
      */
     public update() {
         this.x = this.x + this.movementSpeed
+        this.dy += this.gravity
+        this.y += this.dy
+
+        //check if worm is on ground
+        if(this.y >= window.innerHeight - this.worm.clientHeight) {
+            this.onGround = true
+            this.jumping = false
+            console.log("ik sta op de grond")
+            this.dy = 0
+        } else {
+            this.onGround = false
+        }
+
+        if (this.jumping == true) {
+            this.dy = this.jumpHeight
+        }
 
         if (this.movementSpeed > 0) {
             this.worm.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(-1)`
         }
+
         if (this.movementSpeed < 0) {
             this.worm.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(1)`
         }
