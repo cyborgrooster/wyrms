@@ -25,15 +25,19 @@ var Worm = (function () {
         this.jumping = false;
         this.gravity = 0.2;
         this.health = 3;
+        this.dead = false;
         this.gotHit = false;
         this.worm = document.createElement("worm");
+        this.hpDisplay = document.createElement("hpdisplay");
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.worm);
+        game.appendChild(this.hpDisplay);
         this.y = window.innerHeight - this.worm.clientHeight;
         this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
         this.akey = 65;
         this.dkey = 68;
         this.wkey = 87;
+        this.skey = 83;
         window.addEventListener("keydown", function (event) { return _this.onKeyDown(event); });
         window.addEventListener("keyup", function (event) { return _this.onKeyUp(event); });
     }
@@ -53,6 +57,11 @@ var Worm = (function () {
                     console.log("jumped");
                     this.dy = this.jumpHeight;
                 }
+                break;
+            case this.skey:
+                this.gotHit = true;
+                console.log("you got shot");
+                break;
         }
     };
     Worm.prototype.onKeyUp = function (event) {
@@ -76,9 +85,18 @@ var Worm = (function () {
             this.dy = 0;
         }
         if (this.gotHit) {
-            this.health - 1;
+            this.health = this.health - 1;
+            this.hpDisplay.style.backgroundColor = "yellow";
+            console.log(this.health);
+            this.gotHit = false;
         }
-        if (this.health < 0) {
+        if (this.health == 0) {
+            this.dead = true;
+            this.worm.remove();
+        }
+        if (this.dead) {
+            this.hpDisplay.style.backgroundColor = "red";
+            console.log("game over");
         }
         this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px) scaleX(" + this.scale + ")";
     };

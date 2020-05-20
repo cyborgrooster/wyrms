@@ -1,6 +1,7 @@
 class Worm {
 
     private worm: HTMLElement
+    private hpDisplay: HTMLElement
 
     private x: number = 0
     private y: number = 0
@@ -9,6 +10,7 @@ class Worm {
     private akey: number
     private dkey: number
     private wkey: number
+    private skey: number
 
     private scale:number = 1
     private movementSpeed: number = 0
@@ -17,6 +19,7 @@ class Worm {
     private gravity: number = 0.2
 
     private health: number = 3
+    private dead: boolean = false
     private gotHit: boolean = false
 
 
@@ -24,11 +27,15 @@ class Worm {
         //create the worm element
         this.worm = document.createElement("worm")
 
+        //create hp element
+        this.hpDisplay = document.createElement("hpdisplay")
+
         //get the game element
         let game = document.getElementsByTagName("game")[0]
 
         //append the worm element to the game element
         game.appendChild(this.worm)
+        game.appendChild(this.hpDisplay)
 
         //set position of the worm to the bottom of the screen
         this.y = window.innerHeight - this.worm.clientHeight
@@ -38,6 +45,7 @@ class Worm {
         this.akey = 65
         this.dkey = 68
         this.wkey = 87
+        this.skey = 83
 
         //add event listeners
         window.addEventListener("keydown", (event: KeyboardEvent) => this.onKeyDown(event))
@@ -66,6 +74,11 @@ class Worm {
                 console.log("jumped")
                 this.dy = this.jumpHeight
                 }
+                break
+            case this.skey:
+                this.gotHit = true
+                console.log("you got shot")
+                break
         }
     }
 
@@ -104,10 +117,19 @@ class Worm {
 
         //check if worm was hit and remove health
         if (this.gotHit) {
-            this.health - 1
+            this.health = this.health - 1
+            this.hpDisplay.style.backgroundColor = "yellow"
+            console.log(this.health)
+            this.gotHit = false
         }
-        if (this.health < 0) {
-            
+        if (this.health == 0) {
+            this.dead = true
+            this.worm.remove()
+        }
+
+        if(this.dead) {
+            this.hpDisplay.style.backgroundColor = "red"
+            console.log("game over")
         }
 
         this.worm.style.transform = `translate(${this.x}px, ${this.y}px) scaleX(${this.scale})`

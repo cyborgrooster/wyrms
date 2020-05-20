@@ -13,9 +13,15 @@ game * {
     background-repeat: no-repeat;
 }
 
+hpdisplay {
+    background-color: rgb(6, 243, 6);
+    height: 20px;
+    width: 100px;
+}
+
 worm {
-    background-image: url(../images/wyrm.png);
-    width: 201px; height: 158px;
+    background-image: url(../images/worm.png);
+    width: 200px; height: 130px;
 }
 
 background {
