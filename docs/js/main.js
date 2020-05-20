@@ -27,6 +27,7 @@ var Worm = (function () {
         this.health = 3;
         this.dead = false;
         this.gotHit = false;
+        this.hitsTaken = 0;
         this.worm = document.createElement("worm");
         this.hpDisplay = document.createElement("hpdisplay");
         var game = document.getElementsByTagName("game")[0];
@@ -85,17 +86,23 @@ var Worm = (function () {
             this.dy = 0;
         }
         if (this.gotHit) {
+            this.hitsTaken = this.hitsTaken + 1;
             this.health = this.health - 1;
-            this.hpDisplay.style.backgroundColor = "yellow";
             console.log(this.health);
             this.gotHit = false;
         }
+        if (this.hitsTaken == 1) {
+            this.hpDisplay.classList.add("hit1");
+        }
+        if (this.hitsTaken == 2) {
+            this.hpDisplay.classList.add("hit2");
+        }
         if (this.health == 0) {
             this.dead = true;
+            this.hpDisplay.classList.add("hit3");
             this.worm.remove();
         }
         if (this.dead) {
-            this.hpDisplay.style.backgroundColor = "red";
             console.log("game over");
         }
         this.worm.style.transform = "translate(" + this.x + "px, " + this.y + "px) scaleX(" + this.scale + ")";

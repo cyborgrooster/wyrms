@@ -14,9 +14,21 @@ game * {
 }
 
 hpdisplay {
-    background-color: rgb(6, 243, 6);
-    height: 20px;
+    background-image: url(../images/lives/fulllife.png);
+    height: 29px;
     width: 100px;
+}
+
+.hit1 {
+    background-image: url(../images/lives/twolife.png);  
+}
+
+.hit2 {
+    background-image: url(../images/lives/onelife.png);  
+}
+
+.hit3 {
+    background-image: url(../images/lives/deadlife.png);
 }
 
 worm {

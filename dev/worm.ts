@@ -21,6 +21,7 @@ class Worm {
     private health: number = 3
     private dead: boolean = false
     private gotHit: boolean = false
+    private hitsTaken: number = 0
 
 
     constructor() {
@@ -117,18 +118,27 @@ class Worm {
 
         //check if worm was hit and remove health
         if (this.gotHit) {
+            this.hitsTaken = this.hitsTaken + 1
             this.health = this.health - 1
-            this.hpDisplay.style.backgroundColor = "yellow"
             console.log(this.health)
             this.gotHit = false
         }
+
+        if(this.hitsTaken == 1) {
+            this.hpDisplay.classList.add("hit1")
+        }
+
+        if(this.hitsTaken == 2) {
+            this.hpDisplay.classList.add("hit2")
+        }
+
         if (this.health == 0) {
             this.dead = true
+            this.hpDisplay.classList.add("hit3")
             this.worm.remove()
         }
 
         if(this.dead) {
-            this.hpDisplay.style.backgroundColor = "red"
             console.log("game over")
         }
 
