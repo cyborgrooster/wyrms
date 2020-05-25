@@ -5,13 +5,11 @@ var Mole = (function () {
         this.speed = 3;
         this.molHP = 3;
         this.div = document.createElement("mole");
-        this.hpBar = document.createElement("hpBar");
-        this.akey = 65;
+        this.akey = 75;
         var game = document.getElementsByTagName("game")[0];
         game.appendChild(this.div);
-        game.appendChild(this.hpBar);
         this.x = 1300;
-        this.y = 705;
+        this.y = window.innerHeight - this.div.clientHeight;
         this.gotHit = false;
         console.log(this.molHP);
         window.addEventListener("keydown", function (event) { return _this.onKeyDown(event); });
@@ -34,7 +32,6 @@ var Mole = (function () {
         this.x += this.speed;
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
         if (this.molHP == 2) {
-            this.hpBar.className = "heart1";
         }
         if (this.gotHit == true) {
             this.molHP = this.molHP - 1;

@@ -16,14 +16,15 @@ game * {
 
 mole {
     background-image: url(../images/mole.png);
-    width:500px; 
-    height: 500px;
+    width:100px; 
+    height: 107px;
 }
 
 .mole2 {
     background-image: url(../images/mole2.png);
-    width:500px; 
-    height: 500px;
+    width:100px; 
+    height: 107px;
+
 }
 
 background {
@@ -37,7 +38,7 @@ hpBar {
     width: 1920px; height: 1080px;
 }
 
-.heart2 {
+/* .heart2 {
     background-image: url(../images/heart2.png);
 }
 
@@ -46,7 +47,7 @@ hpBar {
 }
 .heartempty {
     background-image: url(../images/heartempty.png);
-}
+} */
 
 hpdisplay {
     background-image: url(../images/lives/fulllife.png);

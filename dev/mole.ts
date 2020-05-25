@@ -7,19 +7,19 @@ class Mole {
     private molHP : number = 3
     private akey: number
     private gotHit : boolean 
-    private hpBar: HTMLElement
+    //private hpBar: HTMLElement
     
     constructor() {
         this.div = document.createElement("mole")
-        this.hpBar = document.createElement("hpBar")
-        this.akey = 65
+        //this.hpBar = document.createElement("hpBar")
+        this.akey = 75
 
         let game = document.getElementsByTagName("game")[0]
         game.appendChild(this.div)
-        game.appendChild(this.hpBar)
+       // game.appendChild(this.hpBar)
         
         this.x = 1300
-        this.y = 705
+        this.y = window.innerHeight - this.div.clientHeight
         this.gotHit = false
 
         console.log(this.molHP);
@@ -49,7 +49,7 @@ class Mole {
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
 
         if (this.molHP == 2) {
-            this.hpBar.className = "heart1"
+            //this.hpBar.className = "heart1"
         }
 
         if (this.gotHit == true) {
