@@ -27,9 +27,8 @@ mole {
 }
 
 background {
-    background-image: url(../images/dirt.png);
-    width:100%; 
-    height: 100%;
+    background-image: url(../images/background.png);
+    width:100%; height: 100%;
     background-size: cover;
 }
 
@@ -49,3 +48,25 @@ hpBar {
     background-image: url(../images/heartempty.png);
 }
 
+hpdisplay {
+    background-image: url(../images/lives/fulllife.png);
+    height: 29px;
+    width: 100px;
+}
+
+.hit1 {
+    background-image: url(../images/lives/twolife.png);  
+}
+
+.hit2 {
+    background-image: url(../images/lives/onelife.png);  
+}
+
+.hit3 {
+    background-image: url(../images/lives/deadlife.png);
+}
+
+worm {
+    background-image: url(../images/worm.png);
+    width: 200px; height: 130px;
+}
